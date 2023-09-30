@@ -27,3 +27,6 @@ npx create-react-app client --template typescript
 Run: cd client
 
 Run: npm start
+
+App deployed
+https://aptos-fellowship.vercel.app/
