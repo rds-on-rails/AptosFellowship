@@ -1,0 +1,29 @@
+{
+  "folders": [
+	{
+		"path": "../../aptogems"
+	},
+	{
+		"path": "../../move"
+	},
+	{
+		"path": "../../move-aptos"
+	},
+	{
+		"path": "../../aptos-core/aptos-core"
+	},
+	{
+		"path": "../../Node"
+	},
+	{
+		"path": "../../my-first-dapp"
+	},
+	{
+		"path": "../../Aptos-dev-"
+	},
+	{
+		"path": "."
+	}
+],
+  "settings": {}
+}

@@ -65,13 +65,36 @@ function App() {
     }
   };
 
+  const mintnft = async () => {
+    if (!account) return [];
+    setTransactionInProgress(true);
+    // build a transaction payload to be submited
+    const payload = {
+      type: "entry_function_payload",
+      function: `${moduleAddress}::mint_nft::create_list`,
+      type_arguments: [],
+      arguments: [],
+    };
+    try {
+      // sign and submit transaction to chain
+      const response = await signAndSubmitTransaction(payload);
+      // wait for transaction
+      await provider.waitForTransaction(response.hash);
+      setAccountHasList(true);
+    } catch (error: any) {
+      setAccountHasList(false);
+    } finally {
+      setTransactionInProgress(false);
+    }
+  };
+
   const addNewList = async () => {
     if (!account) return [];
     setTransactionInProgress(true);
     // build a transaction payload to be submited
     const payload = {
       type: "entry_function_payload",
-      function: `${moduleAddress}::notion::create_list`,
+      function: `${moduleAddress}::mint_nft::create_list`,
       type_arguments: [],
       arguments: [],
     };
@@ -187,6 +210,22 @@ function App() {
           </Col>
           <Col span={12} style={{ textAlign: "right", paddingRight: "200px" }}>
             <WalletSelector />
+          </Col>
+        </Row>
+      </Layout>
+
+      <Layout>
+        <Row gutter={[0, 32]} style={{ marginTop: "2rem" }}>
+          <Col span={8} offset={8}>
+            <Button
+              //disabled={!account}
+              block
+              onClick={mintnft}
+              type="primary"
+              style={{ height: "40px", backgroundColor: "#3f67ff" }}
+            >
+              Mint NFT
+            </Button>
           </Col>
         </Row>
       </Layout>
